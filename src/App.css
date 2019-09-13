@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+.card-body {
+  color: #282c34;
+}
+
+.card {
+  display: inherit !important;
+}
+
+.card-img-top {
+  width: 200px !important;
+}
