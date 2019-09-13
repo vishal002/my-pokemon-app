@@ -10,8 +10,7 @@ class Dashboard extends React.Component{
             currentPage: 1
         };
         this.getData = this.getData.bind(this);
-        this.handleIncrementChange = this.handleIncrementChange.bind(this);
-        this.handleDecrementChange = this.handleDecrementChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
@@ -48,23 +47,23 @@ class Dashboard extends React.Component{
                             <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                 <button type="button" className="btn btn-secondary"
                                         disabled={this.state.currentPage === 1}
-                                        onClick={this.handleDecrementChange} >Previous</button>
+                                        onClick={ ()=> this.handleChange('decrement')} >Previous</button>
                                 <button type="button" className="btn btn-secondary"
-                                        onClick={this.handleIncrementChange}>Next</button>
+                                        onClick={()=> this.handleChange('increment')}>Next</button>
                             </div>
                         </div>
                     </div>
                 </div>
     }
 
-    handleIncrementChange(){
-        this.setState({currentPage : this.state.currentPage+1});
-        this.getData();
-    }
-
-    handleDecrementChange(){
-        this.setState({currentPage : this.state.currentPage-1});
-        this.getData();
+    handleChange(param){
+        if(param === 'increment'){
+            this.setState({currentPage : this.state.currentPage+1});
+            this.getData();
+        } else {
+            this.setState({currentPage : this.state.currentPage-1});
+            this.getData();
+        }
     }
 }
 
